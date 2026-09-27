@@ -108,9 +108,5 @@
     (variable_expr
       (identifier) @variable.member)))
 
-; Attribute access does not make its root a built-in variable.
-(expression
-  (variable_expr
-    (identifier))
-  (get_attr
-    (identifier) @variable.member))
+(get_attr
+  (identifier) @variable.member)
