@@ -86,13 +86,20 @@
 
 (body
   (block
+    .
     (identifier) @keyword))
 
 (body
   (block
     (body
       (block
+        .
         (identifier) @type))))
+
+(block
+  .
+  (identifier)
+  (identifier) @label)
 
 (function_call
   (identifier) @function)
@@ -108,11 +115,5 @@
     (variable_expr
       (identifier) @variable.member)))
 
-; var.foo, data.bar
-;
-; first element in get_attr is a variable.builtin or a reference to a variable.builtin
-(expression
-  (variable_expr
-    (identifier) @variable.builtin)
-  (get_attr
-    (identifier) @variable.member))
+(get_attr
+  (identifier) @variable.member)

@@ -1,30 +1,38 @@
 ; inherits: hcl
 
-; Terraform specific references
-;
-;
-; local/module/data/var/output
-(expression
+; Namespace roots must be followed by an attribute access, allowing comments.
+; Bare object keys and iterator values can have the same names as namespaces.
+(_
   (variable_expr
     (identifier) @variable.builtin
-    (#any-of? @variable.builtin "data" "var" "local" "module" "output"))
-  (get_attr
-    (identifier) @variable.member))
+    (#any-of? @variable.builtin
+      "data" "var" "local" "module" "output" "count" "each" "self" "terraform" "action" "caller"
+      "ephemeral"))
+  .
+  (comment)*
+  .
+  (get_attr))
 
 ; path.root/cwd/module
-(expression
+(_
   (variable_expr
     (identifier) @type.builtin
     (#eq? @type.builtin "path"))
+  .
+  (comment)*
+  .
   (get_attr
     (identifier) @variable.builtin
     (#any-of? @variable.builtin "root" "cwd" "module")))
 
 ; terraform.workspace
-(expression
+(_
   (variable_expr
     (identifier) @type.builtin
     (#eq? @type.builtin "terraform"))
+  .
+  (comment)*
+  .
   (get_attr
     (identifier) @variable.builtin
     (#eq? @variable.builtin "workspace")))
