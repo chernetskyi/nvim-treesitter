@@ -86,13 +86,20 @@
 
 (body
   (block
+    .
     (identifier) @keyword))
 
 (body
   (block
     (body
       (block
+        .
         (identifier) @type))))
+
+(block
+  .
+  (identifier)
+  (identifier) @label)
 
 (function_call
   (identifier) @function)
