@@ -3,7 +3,13 @@
   (object)
   (tuple)
   (function_call)
+  (for_tuple_expr)
+  (for_object_expr)
 ] @indent.begin
+
+(expression
+  "("
+  ")") @indent.begin
 
 [
   "]"
