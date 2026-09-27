@@ -108,11 +108,9 @@
     (variable_expr
       (identifier) @variable.member)))
 
-; var.foo, data.bar
-;
-; first element in get_attr is a variable.builtin or a reference to a variable.builtin
+; Attribute access does not make its root a built-in variable.
 (expression
   (variable_expr
-    (identifier) @variable.builtin)
+    (identifier))
   (get_attr
     (identifier) @variable.member))
